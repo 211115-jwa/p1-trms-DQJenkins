@@ -10,8 +10,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.revature.beans.Comment;
+import com.revature.beans.Employee;
+import com.revature.beans.Reimbursement;
 import com.revature.data.CommentDAO;
 import com.revature.utils.ConnectionUtil;
+import com.revature.utils.DAOFactory;
 
 public class CommentPostgres implements CommentDAO {
 	private ConnectionUtil connUtil = ConnectionUtil.getConnectionUtil();
@@ -30,8 +33,19 @@ public class CommentPostgres implements CommentDAO {
 					+ " values (?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql,keys);
 			pStmt.setString(1, dataToAdd.getCommentText());
-			pStmt.setInt(2, dataToAdd.getRequest().getReqId());
-			pStmt.setInt(3, dataToAdd.getApprover().getEmpId());
+			if (dataToAdd.getRequest() != null) {
+				pStmt.setInt(2, dataToAdd.getRequest().getReqId());
+			}
+			else {
+				pStmt.setNull(2, java.sql.Types.NULL);
+			}
+			if (dataToAdd.getApprover() != null) {
+				pStmt.setInt(3, dataToAdd.getApprover().getEmpId());
+			}
+			else {
+				pStmt.setNull(3, java.sql.Types.NULL);
+			}
+			
 			pStmt.setTimestamp(4, Timestamp.valueOf(dataToAdd.getSentAt()));
 			
 			pStmt.executeUpdate();
@@ -63,8 +77,12 @@ public class CommentPostgres implements CommentDAO {
 				comment = new Comment();
 				comment.setCommentId(id);
 				comment.setCommentText(resultSet.getString("comment_text"));
-				comment.getApprover().setEmpId(resultSet.getInt("approver_id"));
-				comment.getRequest().setReqId(resultSet.getInt("req_id"));
+				Employee approver = DAOFactory.getEmployeeDAO().getById(resultSet.getInt("approver_id"));
+				comment.setApprover(approver);
+				//comment.getApprover().setEmpId(resultSet.getInt("approver_id"));
+				Reimbursement request = DAOFactory.getReimbursementDAO().getById(resultSet.getInt("req_id"));
+				comment.setRequest(request);
+				//comment.getRequest().setReqId(resultSet.getInt("req_id"));
 				comment.setSentAt(resultSet.getTimestamp("sent_at").toLocalDateTime());
 			}
 		
@@ -87,8 +105,12 @@ public class CommentPostgres implements CommentDAO {
 				Comment comment = new Comment();
 				comment.setCommentId(resultSet.getInt("comment_id"));
 				comment.setCommentText(resultSet.getString("comment_text"));
-				comment.getApprover().setEmpId(resultSet.getInt("approver_id"));
-				comment.getRequest().setReqId(resultSet.getInt("req_id"));
+				Employee approver = DAOFactory.getEmployeeDAO().getById(resultSet.getInt("approver_id"));
+				comment.setApprover(approver);
+				//comment.getApprover().setEmpId(resultSet.getInt("approver_id"));
+				Reimbursement request = DAOFactory.getReimbursementDAO().getById(resultSet.getInt("req_id"));
+				comment.setRequest(request);
+				//comment.getRequest().setReqId(resultSet.getInt("req_id"));
 				comment.setSentAt(resultSet.getTimestamp("sent_at").toLocalDateTime());
 				
 				comments.add(comment);
@@ -114,8 +136,12 @@ public class CommentPostgres implements CommentDAO {
 				Comment comment = new Comment();
 				comment.setCommentId(resultSet.getInt("comment_id"));
 				comment.setCommentText(resultSet.getString("comment_text"));
-				comment.getApprover().setEmpId(resultSet.getInt("approver_id"));
-				comment.getRequest().setReqId(resultSet.getInt("req_id"));
+				Employee approver = DAOFactory.getEmployeeDAO().getById(resultSet.getInt("approver_id"));
+				comment.setApprover(approver);
+				//comment.getApprover().setEmpId(resultSet.getInt("approver_id"));
+				Reimbursement request = DAOFactory.getReimbursementDAO().getById(resultSet.getInt("req_id"));
+				comment.setRequest(request);
+				//comment.getRequest().setReqId(resultSet.getInt("req_id"));
 				comment.setSentAt(resultSet.getTimestamp("sent_at").toLocalDateTime());
 				
 				comments.add(comment);

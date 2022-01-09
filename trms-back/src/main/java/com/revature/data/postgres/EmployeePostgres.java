@@ -8,10 +8,12 @@ import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.revature.beans.Department;
 import com.revature.beans.Employee;
 import com.revature.beans.Role;
 import com.revature.data.EmployeeDAO;
 import com.revature.utils.ConnectionUtil;
+import com.revature.utils.DAOFactory;
 
 public class EmployeePostgres implements EmployeeDAO {
 	private ConnectionUtil connUtil = ConnectionUtil.getConnectionUtil();
@@ -39,7 +41,7 @@ public class EmployeePostgres implements EmployeeDAO {
 			pStmt.setString(4, dataToAdd.getPassword());
 			pStmt.setInt(5, dataToAdd.getRole().getRoleId());
 			pStmt.setDouble(6, dataToAdd.getFunds());
-			pStmt.setInt(7, dataToAdd.getSupervisor().getEmpId());
+			pStmt.setNull(7, java.sql.Types.NULL);
 			pStmt.setInt(8, dataToAdd.getDepartment().getDeptId());
 			
 			pStmt.executeUpdate();
@@ -91,8 +93,12 @@ public class EmployeePostgres implements EmployeeDAO {
 				role.setRoleId(resultSet.getInt("role_id"));
 				role.setName(resultSet.getString("role_name"));
 				emp.setRole(role);
-				emp.getSupervisor().setEmpId(resultSet.getInt("supervisor_id"));
-				emp.getDepartment().setDeptId(resultSet.getInt("dept_id"));
+				Employee supervisor = getById(resultSet.getInt("supervisor_id"));
+//				emp.getSupervisor().setEmpId(resultSet.getInt("supervisor_id"));
+				emp.setSupervisor(supervisor);
+				Department dep = DAOFactory.getDepartmentDAO().getById(resultSet.getInt("dept_id"));
+//				emp.getDepartment().setDeptId(resultSet.getInt("dept_id"));
+				emp.setDepartment(dep);
 			}
 		
 		} catch (SQLException e) {
@@ -134,8 +140,12 @@ public class EmployeePostgres implements EmployeeDAO {
 				role.setRoleId(resultSet.getInt("role_id"));
 				role.setName(resultSet.getString("role_name"));
 				emp.setRole(role);
-				emp.getSupervisor().setEmpId(resultSet.getInt("supervisor_id"));
-				emp.getDepartment().setDeptId(resultSet.getInt("dept_id"));
+				Employee supervisor = getById(resultSet.getInt("supervisor_id"));
+//				emp.getSupervisor().setEmpId(resultSet.getInt("supervisor_id"));
+				emp.setSupervisor(supervisor);
+				Department dep = DAOFactory.getDepartmentDAO().getById(resultSet.getInt("dept_id"));
+//				emp.getDepartment().setDeptId(resultSet.getInt("dept_id"));
+				emp.setDepartment(dep);
 				
 				emps.add(emp);
 			}
@@ -168,7 +178,13 @@ public class EmployeePostgres implements EmployeeDAO {
 			pStmt.setString(4, dataToUpdate.getPassword());
 			pStmt.setInt(5, dataToUpdate.getRole().getRoleId());
 			pStmt.setDouble(6, dataToUpdate.getFunds());
-			pStmt.setInt(7, dataToUpdate.getSupervisor().getEmpId());
+			if ( dataToUpdate.getSupervisor() != null) {
+				pStmt.setInt(7, dataToUpdate.getSupervisor().getEmpId());
+			}
+			else
+			{
+				pStmt.setNull(7, java.sql.Types.NULL);
+			}
 			pStmt.setInt(8, dataToUpdate.getDepartment().getDeptId());
 			pStmt.setInt(9, dataToUpdate.getEmpId());
 			
@@ -239,8 +255,12 @@ public class EmployeePostgres implements EmployeeDAO {
 				role.setRoleId(resultSet.getInt("role_id"));
 				role.setName(resultSet.getString("role_name"));
 				emp.setRole(role);
-				emp.getSupervisor().setEmpId(resultSet.getInt("supervisor_id"));
-				emp.getDepartment().setDeptId(resultSet.getInt("dept_id"));
+				Employee supervisor = getById(resultSet.getInt("supervisor_id"));
+//				emp.getSupervisor().setEmpId(resultSet.getInt("supervisor_id"));
+				emp.setSupervisor(supervisor);
+				Department dep = DAOFactory.getDepartmentDAO().getById(resultSet.getInt("dept_id"));
+//				emp.getDepartment().setDeptId(resultSet.getInt("dept_id"));
+				emp.setDepartment(dep);
 			}
 		
 		} catch (SQLException e) {

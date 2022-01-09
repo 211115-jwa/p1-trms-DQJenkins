@@ -8,9 +8,9 @@ public class Department {
 	private int deptHeadId;
 	
 	public Department() {
-		deptId = 0;
-		name = "";
-		deptHeadId = 0;
+		deptId = 5;
+		name = "General";
+		deptHeadId = 12;
 	}
 
 	public int getDeptId() {

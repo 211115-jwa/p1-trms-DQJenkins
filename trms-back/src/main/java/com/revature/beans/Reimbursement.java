@@ -26,9 +26,9 @@ public class Reimbursement {
 		location="";
 		description="";
 		cost=0.0;
-		gradingFormat = new GradingFormat();
-		eventType =  new EventType();
-		status = new Status();
+		gradingFormat = null;
+		eventType =  null;
+		status = null;
 		submittedAt = LocalDateTime.now();
 	}
 
