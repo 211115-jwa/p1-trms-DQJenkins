@@ -5,11 +5,11 @@ insert into event_type(type_id, type_name, percent_covered) values (default,'Cer
 insert into event_type(type_id, type_name, percent_covered) values (default,'Seminar',0.60);
 insert into event_type(type_id, type_name, percent_covered) values (default,'Other',0.30);
 
-insert into status(status_id, status_name, approver) values (default,'Pending Approval' ,'Direct Supervisor');
+insert into status(status_id, status_name, approver) values (default,'Pending Approval' ,'Supervisor');
 insert into status(status_id, status_name, approver) values (default,'Pending Approval' ,'Department Head');
 insert into status(status_id, status_name, approver) values (default,'Pending Approval' ,'Benefits Coordinator');
 insert into status(status_id, status_name, approver) values (default,'Approved' ,'Benefits Coordinator');
-insert into status(status_id, status_name, approver) values (default,'Rejected' ,'Direct Supervisor');
+insert into status(status_id, status_name, approver) values (default,'Rejected' ,'Supervisor');
 insert into status(status_id, status_name, approver) values (default,'Rejected' ,'Department Head');
 insert into status(status_id, status_name, approver) values (default,'Rejected' ,'Benefits Coordinator');
 

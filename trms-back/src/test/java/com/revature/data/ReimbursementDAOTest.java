@@ -92,4 +92,44 @@ public class ReimbursementDAOTest {
 		int newSize = reimbursementDAO.getAll().size();
 		assertEquals(currentSize-1, newSize);
 	}
+	
+	//public Set<Reimbursement> getByApprover(Employee approver);
+	@Test
+	public void getByApproverWhenApproverIsBenefitsCoordinator() {
+		//Test data employee 4 is a Benefits Coordinator
+		Employee approver = DAOFactory.getEmployeeDAO().getById(4);
+		Set<Reimbursement> request = reimbursementDAO.getByApprover(approver);
+		assertFalse(request.isEmpty());
+		for(Reimbursement req: request) {
+			assertEquals("Benefits Coordinator", req.getStatus().getApprover());
+		}
+	}
+	@Test
+	public void getByApproverWhenApproverIsDepartmentHead() {
+		//Test data employee 1 is a Department Head for Department 1
+		Employee approver = DAOFactory.getEmployeeDAO().getById(1);
+		Set<Reimbursement> request = reimbursementDAO.getByApprover(approver);
+		assertFalse(request.isEmpty());
+		for(Reimbursement req: request) {
+			assertEquals(1, req.getRequestor().getDepartment().getDeptId());
+			assertEquals("Department Head", req.getStatus().getApprover());
+		}
+	}
+	@Test
+	public void getByApproverWhenApproverIsSupervisor() {
+		//Test data employee 5 is a Supervisor to employee 9
+		Employee approver = DAOFactory.getEmployeeDAO().getById(5);
+		Set<Reimbursement> request = reimbursementDAO.getByApprover(approver);
+		assertFalse(request.isEmpty());
+		for(Reimbursement req: request) {
+			assertEquals(approver, req.getRequestor().getSupervisor());
+		}
+	}
+	@Test
+	public void getByApproverWhenApproverIsEmployee() {
+		//Test data employee 10 is a standard employee and would have no pending requests to approve
+		Employee approver = DAOFactory.getEmployeeDAO().getById(10);
+		Set<Reimbursement> request = reimbursementDAO.getByApprover(approver);
+		assertTrue(request.isEmpty());
+	}
 }
