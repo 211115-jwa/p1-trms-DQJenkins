@@ -35,23 +35,29 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 
 	@Override
 	public void approveRequest(Reimbursement request) {
-		//if status < 4
-		//status++
-		//else return (request already completed)
+		if (request.getStatus().getName().equals("Pending Approval")) {
+			request.setStatus(DAOFactory.getStatusDAO().getById(
+					request.getStatus().getStatusId() + 1));
+		}
 	}
 
 	@Override
 	public void rejectRequest(Reimbursement request) {
-		//if status < 4
-		//status += 4
-		//else return(request already completed)
+		if (request.getStatus().getName().equals("Pending Approval")) {
+			request.setStatus(DAOFactory.getStatusDAO().getById(
+					request.getStatus().getStatusId() + 4));
+		}
 	}
 
 	@Override
 	public void rejectRequest(Reimbursement request, Comment comment) {
-		//if status < 4
-		//status += 4, create comment
-		//else return(request already completed)
+		if (request.getStatus().getName().equals("Pending Approval")) {
+			request.setStatus(DAOFactory.getStatusDAO().getById(
+					request.getStatus().getStatusId() + 4));
+			comment.setRequest(request);
+			comment.setApprover(DAOFactory.getEmployeeDAO().getApproverByRequest(request));
+			DAOFactory.getCommentDAO().create(comment);
+		}
 	}
 
 }

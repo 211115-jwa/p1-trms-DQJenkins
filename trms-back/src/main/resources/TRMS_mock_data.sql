@@ -35,9 +35,9 @@ insert into employee (emp_id, first_name, last_name, username, passwd, role_id, 
 insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Heinrick', 'Jersch', 'hjersch4', 'pass', 2, 1000.00, 1, 1);
 insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Risa', 'Gilfoy', 'rgilfoy5', 'pass', 2, 668.55, 2, 2);
 insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Brocky', 'Melling', 'bmelling6', 'pass', 2, 329.84, 3, 3);
-insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Codi', 'Spenclay', 'cspenclay7', 'pass', 1, 1000.00, 4, 1);
-insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Ketty', 'Casterou', 'kcasterou8', 'pass', 1, 1000.00, 5, 2);
-insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Sibelle', 'Goldson', 'sgoldson9', 'pass', 1, 750.55, 6, 3);
+insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Codi', 'Spenclay', 'cspenclay7', 'pass', 1, 1000.00, 5, 1);
+insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Ketty', 'Casterou', 'kcasterou8', 'pass', 1, 1000.00, 6, 2);
+insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Sibelle', 'Goldson', 'sgoldson9', 'pass', 1, 750.55, 7, 3);
 insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'Cornelius', 'Smith', 'csmith26', 'pass', 1, 750.55, 4, 4);
 insert into employee (emp_id, first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values (default, 'General', 'Admin', 'admin123', 'admin', 3, 0.00, null, 5);
 
@@ -49,7 +49,7 @@ insert into reimbursement (req_id, emp_id, event_date, event_time, location, des
 insert into reimbursement (req_id, emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id, submitted_at) values (default, 10, '2022-08-24', '8:00', 'Eiilm University', 'User-centric system-worthy productivity', 307.39, 1, 5, 2, '2021-12-20 07:21:05');
 insert into reimbursement (req_id, emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id, submitted_at) values (default, 11, '2022-04-09', '16:15', 'College of St. Mary', 'User-friendly systemic parallelism', 82.94, 1, 4, 1, '2021-11-22 11:24:21');
 insert into reimbursement (req_id, emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id, submitted_at) values (default, 8, '2022-05-25', '12:30', 'Universität Graz', 'Cloned web-enabled task-force', 427.6, 3, 4, 4, '2021-12-22 11:18:35');
-insert into reimbursement (req_id, emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id, submitted_at) values (default, 9, '2022-08-25', '12:00', 'Université Sorbonne-Nouvelle (Paris III)', 'Grass-roots zero administration website', 64.02, 3, 4, 5, '2021-12-14 17:49:01');
+insert into reimbursement (req_id, emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id, submitted_at) values (default, 9, '2022-08-25', '12:00', 'Université Sorbonne-Nouvelle (Paris III)', 'Grass-roots zero administration website', 64.02, 3, 4, 2, '2021-12-14 17:49:01');
 insert into reimbursement (req_id, emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id, submitted_at) values (default, 10, '2022-07-28', '10:15', 'Université du Centre, Sousse', 'Front-line non-volatile service-desk', 125.68, 3, 5, 2, '2021-11-27 12:24:52');
 
 insert into comment (comment_id, comment_text, req_id, approver_id, sent_at) values (default, 'Innovative value-added moratorium', 1, 7, '2022-01-07 19:35:55');

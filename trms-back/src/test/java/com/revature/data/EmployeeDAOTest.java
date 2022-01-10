@@ -4,6 +4,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import com.revature.beans.Employee;
+import com.revature.beans.Reimbursement;
 import com.revature.utils.DAOFactory;
 //this imports the static methods from Assertions so that
 //we can type "assertEquals" rather than "Assertions.assertEquals"
@@ -79,5 +80,33 @@ public class EmployeeDAOTest {
 		employeeDAO.delete(emp);
 		int newSize = employeeDAO.getAll().size();
 		assertEquals(currentSize-1, newSize);
+	}
+	
+	//public Employee getApproverByRequest(Reimbursement request) 
+	@Test
+	public void getApproverByRequestSupervisor() {
+		//Test data request ID 5 is to be approved by a supervisor
+		Reimbursement request = DAOFactory.getReimbursementDAO().getById(5);
+		Employee result = employeeDAO.getApproverByRequest(request);
+		//Test data employee 6 is the supervisor of the employee
+		assertEquals(6, result.getEmpId());
+	}
+	
+	@Test
+	public void getApproverByRequestDepartmentHead() {
+		//Test data request ID 4 is to be approved by the Department Head of Dept 1
+		Reimbursement request = DAOFactory.getReimbursementDAO().getById(4);
+		Employee result = employeeDAO.getApproverByRequest(request);
+		//Test data employee 1 is the Department Head fof Dept 1
+		assertEquals(1, result.getEmpId());
+	}
+	
+	@Test
+	public void getApproverByRequestBenCo() {
+		//Test data request ID 1 is to be approved by a BenCo
+		Reimbursement request = DAOFactory.getReimbursementDAO().getById(1);
+		Employee result = employeeDAO.getApproverByRequest(request);
+		//Test data employee 4 is the BenCo
+		assertEquals(4, result.getEmpId());
 	}
 }

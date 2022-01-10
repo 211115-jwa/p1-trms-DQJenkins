@@ -10,6 +10,7 @@ import java.util.Set;
 
 import com.revature.beans.Department;
 import com.revature.beans.Employee;
+import com.revature.beans.Reimbursement;
 import com.revature.beans.Role;
 import com.revature.data.EmployeeDAO;
 import com.revature.utils.ConnectionUtil;
@@ -269,5 +270,32 @@ public class EmployeePostgres implements EmployeeDAO {
 		
 		return emp;
 	}
-
+	
+	@Override
+	public Employee getApproverByRequest(Reimbursement request) {
+		Employee employee = null;
+		
+		String approverRoleName = DAOFactory.getStatusDAO().getById(request.getStatus().getStatusId()).getApprover();
+		//System.out.println(approverRoleName);
+		Employee requestor = request.getRequestor();
+		if(approverRoleName.equals("Supervisor")){
+			//System.out.println("In supervisor if");
+			return requestor.getSupervisor();
+		}
+		if(approverRoleName.equals("Department Head")) {
+			//System.out.println("In DH if");
+			return getById(requestor.getDepartment().getDeptHeadId());
+		}
+		if(approverRoleName.equals("Benefits Coordinator")) {
+			//System.out.println("In BC if");
+			Set<Employee> allEmployees = getAll();
+			for (Employee emp: allEmployees) {
+				if (emp.getRole().getName().equals(approverRoleName)) {
+					return emp;
+				}
+			}
+		}
+		
+		return employee;
+	}
 }
