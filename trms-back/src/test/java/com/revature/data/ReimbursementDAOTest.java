@@ -117,8 +117,8 @@ public class ReimbursementDAOTest {
 	}
 	@Test
 	public void getByApproverWhenApproverIsSupervisor() {
-		//Test data employee 5 is a Supervisor to employee 9
-		Employee approver = DAOFactory.getEmployeeDAO().getById(5);
+		//Test data employee 6 is a Supervisor to employee 9
+		Employee approver = DAOFactory.getEmployeeDAO().getById(6);
 		Set<Reimbursement> request = reimbursementDAO.getByApprover(approver);
 		assertFalse(request.isEmpty());
 		for(Reimbursement req: request) {
