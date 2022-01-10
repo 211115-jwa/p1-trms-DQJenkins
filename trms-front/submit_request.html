@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Submit New Request</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h3><b>Create New Request</b></h3>
+        <div class="rendered-form">
+            <div class="formbuilder-text form-group field-empId">
+                <label for="empId" class="formbuilder-text-label">Employee ID<span class="formbuilder-required">*</span></label>
+                <input type="text" class="form-control" name="empId" access="false" id="empId" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-date form-group field-date-1641788962488">
+                <label for="date-1641788962488" class="formbuilder-date-label">Date<span class="formbuilder-required">*</span></label>
+                <input type="date" class="date" name="date-1641788962488" access="false" id="date-1641788962488" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-text form-group field-time">
+                <label for="time" class="formbuilder-text-label">Time<span class="formbuilder-required">*</span><span class="tooltip-element" tooltip="12:45:00">?</span></label>
+                <input type="text" class="form-control" name="time" access="false" id="time" title="12:45:00" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-text form-group field-location">
+                <label for="location" class="formbuilder-text-label">Location<span class="formbuilder-required">*</span></label>
+                <input type="text" class="form-control" name="location" access="false" id="location" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-text form-group field-description">
+                <label for="description" class="formbuilder-text-label">Description<span class="formbuilder-required">*</span></label>
+                <input type="text" class="form-control" name="description" access="false" id="description" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-select form-group field-gradingFormat">
+                <label for="gradingFormat" class="formbuilder-select-label">Grading Format<span class="formbuilder-required">*</span></label>
+                <select class="form-control" name="gradingFormat" id="gradingFormat" required="required" aria-required="true">
+                    <option value="option-1" selected="true" id="gradingFormat-0">Letter Grade</option>
+                    <option value="option-2" id="gradingFormat-1">Pass/No Pass</option>
+                    <option value="option-3" id="gradingFormat-2">Percentage</option>
+                </select>
+            </div>
+            <div class="formbuilder-select form-group field-eventType">
+                <label for="eventType" class="formbuilder-select-label">Event Type</label>
+                <select class="form-control" name="eventType" id="eventType">
+                    <option value="option-1" selected="true" id="eventType-0">Certification</option>
+                    <option value="option-2" id="eventType-1">Technical Training</option>
+                    <option value="option-3" id="eventType-2">University Course</option>
+                    <option id="eventType-3">Certification Preparation Course</option>
+                    <option id="eventType-4">Seminar</option>
+                    <option id="eventType-5">Other</option>
+                </select>
+            </div>
+            <div class="formbuilder-button form-group field-submit">
+                <button type="submit" class="btn-default btn" name="submit" access="false" style="default" id="submit">Submit Request</button>
+            </div>
+        </div>
+    </main>
+
+
+    <div class="rendered-form">
+        <div class="formbuilder-button form-group field-button-1641787830307">
+            <button type="button" class="btn-success btn" name="button-1641787830307" access="false" style="success" id="button-1641787830307">Return Home</button>
+        </div>
+    </div>
+</body>
+</html>

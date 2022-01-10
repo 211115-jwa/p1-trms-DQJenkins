@@ -38,6 +38,7 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 		if (request.getStatus().getName().equals("Pending Approval")) {
 			request.setStatus(DAOFactory.getStatusDAO().getById(
 					request.getStatus().getStatusId() + 1));
+			reqDAO.update(request);
 		}
 	}
 
@@ -46,6 +47,7 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 		if (request.getStatus().getName().equals("Pending Approval")) {
 			request.setStatus(DAOFactory.getStatusDAO().getById(
 					request.getStatus().getStatusId() + 4));
+			reqDAO.update(request);
 		}
 	}
 
@@ -54,6 +56,7 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 		if (request.getStatus().getName().equals("Pending Approval")) {
 			request.setStatus(DAOFactory.getStatusDAO().getById(
 					request.getStatus().getStatusId() + 4));
+			reqDAO.update(request);
 			comment.setRequest(request);
 			comment.setApprover(DAOFactory.getEmployeeDAO().getApproverByRequest(request));
 			DAOFactory.getCommentDAO().create(comment);
