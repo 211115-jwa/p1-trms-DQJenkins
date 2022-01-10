@@ -14,7 +14,9 @@ public class TRMSApp {
 	public static void main(String[] args) {
 		Javalin app = Javalin.create(config -> {
             config.jsonMapper(new JacksonMapper());
+            config.enableCorsForAllOrigins();
         }).start();
+		
 		app.routes(() -> {
 			path("/requests", () -> {
 				post(RequestsController::submitReimbursementRequest);

@@ -1,11 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>View Reimbursement Requests</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 <main>
+    <script src="view_requests.js"></script>
     <h3>Reimbursement Requests</h3>
+    <div class="rendered-form">
+        <form name="request_input">
+            <label for="viewRequests">Employee ID</label>
+            <input type="number" name="userInput" id="userInput"></input>
+            <button type="button" name="viewRequests" id="viewRequests" onclick="viewRequestsByEmpId()">View Employee Requests</button>
+        </form>
+    </div>
     <table class="minimalistBlack" id="requests">
         <tr>
             <th>Reimbursement ID</th>
