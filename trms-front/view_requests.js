@@ -28,7 +28,7 @@ function showRequests(requests) {
         let eventDate = (requests[i].eventDate);
         for (let j = 0; j < 3; j++) {
             if (eventDate[j] < 10) {
-                eventDate[j] = ('0' + eventDate[i]);
+                eventDate[j] = ('0' + eventDate[j]);
             }
         }
         eDate = (eventDate[1] + '/' + eventDate[2] + '/' + eventDate[0]);
